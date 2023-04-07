@@ -2,10 +2,15 @@ package ro.pub.cs.systems.eim.practicaltest01var07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class PracticalTest01Var07MainActivity extends AppCompatActivity {
 
@@ -14,6 +19,9 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
     EditText editText2;
     EditText editText3;
     EditText editText4;
+
+    private MessageBroadcastReceiver messageBroadcastReceiver = new MessageBroadcastReceiver();
+    private IntentFilter intentFilter = new IntentFilter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +37,13 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
         button1.setOnClickListener(it -> {
             Intent intent = new Intent(getApplicationContext(), PracticalTest01Var07SecondaryActivity.class);
             intent.putExtra("editText1", editText1.getText().toString());
+            startPracticalService();
             intent.putExtra("editText2", editText2.getText().toString());
+            startPracticalService();
             intent.putExtra("editText3", editText3.getText().toString());
+            startPracticalService();
             intent.putExtra("editText4", editText4.getText().toString());
+            startPracticalService();
             startActivityForResult(intent, 1);
 
         });
@@ -74,4 +86,42 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    // servicii
+
+    private void startPracticalService() {
+        Intent intent = new Intent(getApplicationContext(), PracticalTest01Var07Service.class);
+        intent.putExtra("editText1", editText1.getText().toString());
+        intent.putExtra("editText2", editText2.getText().toString());
+        intent.putExtra("editText3", editText3.getText().toString());
+        intent.putExtra("editText4", editText4.getText().toString());
+
+        getApplicationContext().startService(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(getApplicationContext(), PracticalTest01Var07Service.class);
+        stopService(intent);
+        super.onDestroy();
+    }
+
+    private class MessageBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d ("[Message]", intent.getStringExtra("message"));
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(messageBroadcastReceiver, intentFilter);
+    }
+
+    protected void onPause() {
+        unregisterReceiver(messageBroadcastReceiver);
+        super.onPause();
+    }
+
+
 }
