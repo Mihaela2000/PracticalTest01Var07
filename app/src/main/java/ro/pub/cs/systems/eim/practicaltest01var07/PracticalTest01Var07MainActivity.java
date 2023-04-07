@@ -63,4 +63,15 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
             editText4.setText(savedInstanceState.getString("editText4"));
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String result = intent.getStringExtra("result");
+                editText1.setText(result);
+            }
+        }
+    }
 }

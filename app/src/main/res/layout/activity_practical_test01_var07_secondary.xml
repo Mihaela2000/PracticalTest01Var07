@@ -8,14 +8,14 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/sumButton"
+        android:id="@+id/sum_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Sum" />
 
     <Button
-        android:id="@+id/productButton"
+        android:id="@+id/prod_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,14 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/editText1_nav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editText2_nav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
@@ -48,14 +48,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editText3_nav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/editText4_nav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
