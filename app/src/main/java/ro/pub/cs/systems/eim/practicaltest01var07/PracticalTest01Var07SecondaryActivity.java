@@ -33,7 +33,7 @@ public class PracticalTest01Var07SecondaryActivity extends AppCompatActivity {
             int sum = Integer.parseInt(editText1Nav.getText().toString()) + Integer.parseInt(editText2Nav.getText().toString()) + Integer.parseInt(editText3Nav.getText().toString()) + Integer.parseInt(editText4Nav.getText().toString());
             editText1Nav.setText(String.valueOf(sum));
             Toast toast = Toast.makeText(getApplicationContext(), "The sum is " + sum, Toast.LENGTH_LONG);
-            
+
         });
 
         prodButton.setOnClickListener(it -> {
